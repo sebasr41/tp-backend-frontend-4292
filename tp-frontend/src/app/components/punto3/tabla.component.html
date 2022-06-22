@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">id</th>
+          <th scope="col">categoriaPasajero</th>
+          <th scope="col">fecha</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pasa of pasajes; index as indexOfelement">
+          <th scope="row"></th>
+          <td>{{pasa.dni}}</td>
+          <td>{{pasa.categoriaPasajero}}</td>
+          <td>{{pasa.fechaPasaje | date: "dd/MM/yyyy"}}</td>
+          <td>
+            <button (click)="eliminar(indexOfelement)">Eliminar</button>
+            <button (click)="editar(pasa)">Editar</button>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">TOTAL NIÑO </th>
+          <th scope="col">TOTAL ADULTO</th>
+          <th scope="col">TOTAL JUBILADO</th>
+          <th scope="col">TOTAL </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td>{{ninioResumen | currency: " ARS "}}</td>
+          <td>{{adultoResumen | currency: " ARS "}}</td>
+          <td>{{jubiladoResumen | currency: " ARS "}}</td>
+          <td>{{totalResumen | currency: " ARS "}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

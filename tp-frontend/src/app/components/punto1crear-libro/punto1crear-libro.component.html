@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="col-md-8 offset-md-2">
+        <div class="card-body">
+          <h5 class="card-title">DAR DE ALTA UN LIBRO</h5>
+          <div class="row">
+
+            <form #punto1="ngForm">
+              <div class="mb-3">
+                <label for="tit" class="form-label">titulo</label>
+                <input type="text" class="form-control" required name="titulo" id="idt" [(ngModel)]="libro.titulo"
+                  #titulo="ngModel">
+                <div [hidden]="titulo.valid || titulo.pristine" class="alert alert-danger" role="alert">
+                  El libro debe tener un título.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">imagen</label>
+                <input type="text" class="form-control" required name="img" id="idi" [(ngModel)]="libro.imagen"
+                  #img="ngModel">
+                <div [hidden]="img.valid || img.pristine" class="alert alert-danger" role="alert">
+                  El libro debe tener una imagen.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="stockk" class="form-label">stock</label>
+                <input type="number" class="form-control" name="stock" required id="ids" [(ngModel)]="libro.stock"
+                  #stock="ngModel">
+                <div [hidden]="stock.valid || stock.pristine" class="alert alert-danger" role="alert">
+                  El libro debe tener un stock.
+                </div>
+              </div>
+              <div class="mb-3 form-check">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Destacado
+                </label>
+                <input class="form-check-input" type="checkbox" name="destc" value="" id="flexCheckDefault"
+                  [(ngModel)]="libro.destacado">
+              </div>
+              <div class="mb-3">
+                <label for="dni" class="form-label">descrp</label>
+                <input type="text" class="form-control" name="descp" required id="iddd" [(ngModel)]="libro.descripcion"
+                  #descp="ngModel">
+                <div [hidden]="descp.valid || descp.pristine" class="alert alert-danger" role="alert">
+                  El libro debe tener una descripcion.
+                </div>
+              </div>
+
+              <button (click)="registrarLibro()" [disabled]="punto1.invalid" type="submit" type="submit"
+                class="btn btn-primary">GUARDAR
+                REGISTRO</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

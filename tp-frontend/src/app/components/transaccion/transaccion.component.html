@@ -1,0 +1,47 @@
+<div class="col-md-4 col-sm-12">
+  <h2 class="bg-danger mb-0">Conversor de divisas</h2>
+  <form #transferir="ngForm" class="bg-primary text-white p-3 align-content-center">
+    <div class="mb-2">
+      <label for="exampleInputEmail1" class="form-label mb-1">email cliente</label>
+      <input type="text" name="email" [(ngModel)]="transaccion.emailCliente" class="form-control"
+        id="exampleInputEmail1" required name="email" aria-describedby="emailHelp" #email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger" role="alert">
+        El email debe completarse.
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="exampleInputEmail1" class="form-label mb-1">Cantidad</label>
+      <input type="Number" name="cantidad" required [(ngModel)]="transaccion.cantidadOrigen" class="form-control"
+        id="exampleInputEmail1" aria-describedby="emailHelp" #cantidad="ngModel">
+    </div>
+    <div [hidden]="cantidad.valid || cantidad.pristine" class="alert alert-danger" role="alert">
+      Debe ingresar una cantidad.
+    </div>
+    <div class="mb-2">
+      <label for="exampleInputPassword1" class="form-label mb-1">De</label>
+      <select [(ngModel)]="transaccion.monedaOrigen" class="form-select" name="frmv" aria-label="Default select example"
+        required>
+        <option hidden="" selected="selected">Escoge moneda</option>
+        <option value="ARS">ARS</option>
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+      </select>
+    </div>
+    <div class="mb-2">
+      <label for="exampleInputPassword1" class="form-label">A</label>
+      <select [(ngModel)]="transaccion.monedaDestino" class="form-select" name="idto"
+        aria-label="Default select example" required>
+        <option hidden="" selected="selected">Escoge moneda</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="ARS">ARS</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <input type="text" [(ngModel)]="transaccion.cantidadDestino" disabled name="result" class="form-control"
+        id="textt">
+    </div>
+    <button (click)="registrarTransaccion()" [disabled]="transferir.invalid" type="submit"
+      class="btn btn-warning w-100">Convertir</button>
+  </form>
+</div>

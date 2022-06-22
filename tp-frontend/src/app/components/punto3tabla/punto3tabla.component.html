@@ -1,0 +1,44 @@
+<div class="mb-2">
+  <label for="exampleInputPassword1" class="form-label mb-1">Escoge Categoria</label>
+  <select [(ngModel)]="pasaje.categoriaPasajero" class="form-select" name="frmv" aria-label="Default select example">
+    <option hidden="" selected="selected">Escoge categoria</option>
+    <option value="J">Jubilado</option>
+    <option value="N">Ninio</option>
+    <option value="A">Adulto</option>
+  </select>
+  <div class="mb-2">
+    <button class="btn btn-primary me-2" (click)="filtrar()">Filtrar</button>
+    <button class="btn btn-primary" (click)="obtenerPasajes()">Obtener todos</button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">categoria</th>
+            <th scope="col">precio</th>
+            <th scope="col">fecha</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pasa of pasajes; index as indexOfelement">
+            <th scope="row"></th>
+            <td>{{pasa._id}}</td>
+            <td>{{pasa.categoriaPasajero}}</td>
+            <td>{{pasa.precioPasaje | currency}}</td>
+            <td>{{pasa.fechaCompra| date: "dd/MM/yyyy"}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="eliminar(pasa._id)">Eliminar</button>
+              <button class="btn btn-primary" (click)="editar(pasa._id)">Editar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

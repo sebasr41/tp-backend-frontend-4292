@@ -1,0 +1,43 @@
+<div class="mb-2">
+  <label for="exampleInputPassword1" class="form-label mb-1">Escoge moneda origen</label>
+  <select [(ngModel)]="transaccion.monedaOrigen" class="form-select" name="frmv" aria-label="Default select example">
+    <option hidden="" selected="selected">Escoge moneda</option>
+    <option value="ARS">ARS</option>
+    <option value="EUR">EUR</option>
+    <option value="USD">USD</option>
+  </select>
+</div>
+<div class="mb-2">
+  <label for="exampleInputPassword1" class="form-label mb-1">Escoge moneda destino</label>
+  <select [(ngModel)]="transaccion.monedaDestino" class="form-select" name="frmv" aria-label="Default select example">
+    <option hidden="" selected="selected">Escoge moneda</option>
+    <option value="ARS">ARS</option>
+    <option value="EUR">EUR</option>
+    <option value="USD">USD</option>
+  </select>
+</div>
+<div class="mb-2">
+  <button class="btn btn-primary me-2" (click)="filtrar()">Filtrar</button>
+  <button class="btn btn-primary" (click)="obtenerTransacciones()">Obtener todos</button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Moneda origen</th>
+      <th scope="col">Cantidad origen</th>
+      <th scope="col">Moneda destino</th>
+      <th scope="col">Cantidad destino</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of transacciones; index as indexOfelement">
+      <th scope="row">{{indexOfelement+1}}</th>
+      <th>{{t.monedaOrigen}}</th>
+      <th>{{t.cantidadOrigen | currency}}</th>
+      <th>{{t.monedaDestino}}</th>
+      <th>{{t.cantidadDestino | currency}}</th>
+    </tr>
+  </tbody>
+</table>

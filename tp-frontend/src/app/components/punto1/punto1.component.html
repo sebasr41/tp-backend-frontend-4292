@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-8 col-12 offset-md-2 ">
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-inner mb-5">
+        <div class="carousel-item active">
+          <img src="{{libro.imagen}}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-sm-block d-md-block ">
+            <h5>{{libro.titulo}}</h5>
+            <p>{{libro.descripcion}}</p>
+          </div>
+        </div>
+        <button (click)="anterior()" class="carousel-control-prev" type="button">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button (click)="siguiente()" class="carousel-control-next" type="button">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+  </div>

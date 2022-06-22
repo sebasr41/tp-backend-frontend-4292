@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="col-md-8 offset-md-2">
+        <div class="card-body">
+          <h5 class="card-title">{{tituloform}}</h5>
+          <div class="row">
+            <div *ngIf="guardado" class="alert alert-success" role="alert">
+              Pasaje registrado
+            </div>
+
+            <form #punto3="ngForm">
+              <div class="mb-3">
+                <label for="dni" class="form-label">Dni pasajeros</label>
+                <select class="form-select" name="dni" [(ngModel)]="pasaje.pasajero" required>
+                  <option *ngFor="let persona of personas" value="{{persona._id}}">{{persona.nro_documento}}</option>
+                </select>
+
+              </div>
+
+              <div class="mb-3">
+                <label for="fechapasaje" class="form-label">Fecha pasaje</label>
+                <input type="date" required class="form-control" id="fechapasaje" aria-describedby="idhelp"
+                  [(ngModel)]="pasaje.fechaCompra" name="fechaPasaje">
+              </div>
+
+              <div class="mb-3">
+                <label for="categoriaPasaje" class="form-label">Categoria</label>
+                <select required class="form-control" name="categoriaPasajero" id="categoria" [(ngModel)]="selected"
+                  [(ngModel)]="pasaje.categoriaPasajero" (change)="selectOption($any($event.target).value)">
+                  <option [value]="item.id" *ngFor="let item of items">{{item.name}}</option>
+                </select>
+              </div>
+
+
+
+              <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" [(ngModel)]="pasaje.precioPasaje" name="precio"
+                  [value]="value" (keyup)="changePrecio($event)" #precio="ngModel" required>
+                <div [hidden]="precio.valid || precio.pristine" class="alert alert-danger" role="alert">
+                  debe ingresar un monto
+                </div>
+
+              </div>
+
+              <div>
+                <label *ngIf="mostrarPrecio()" for="PRECIO TOTAL" class="form-label">Precio:{{precioFinal}}
+                </label>
+              </div>
+
+              <button (click)="registrarPasaje()" type="submit" [disabled]="punto3.invalid" *ngIf="accion==='new'"
+                class="btn btn-primary">GUARDAR
+                REGISTRO</button>
+              <button (click)="actualizarPasaje()" type="submit" *ngIf="accion==='update'"
+                class="btn btn-primary">EDITAR
+                REGISTRO</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

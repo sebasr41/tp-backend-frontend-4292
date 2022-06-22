@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="col mb-1">
+        <p class="bg-warning text-center">Categoria: {{title}}</p>
+        <img src="{{imagenes[numeroImg]}}" class="d-block " alt="...">
+      </div>
+      <button [disabled]="bloquearTeclado" class="btn btn-primary mb-1" *ngFor="let letra of letras"
+        (click)="intentar(letra)">
+        {{letra}}
+      </button>
+      <p class="mb-1  text-warning">Vidas: {{vidas}}</p>
+      <p class="text-warning ">Palabra a buscar: <span *ngFor="let l of palabraSeleccionadaArreglo"> {{l}} </span>
+      </p>
+      <button *ngIf="intentarDeNuevo" (click)="reiniciarJuego()" class="btn btn-primary">Intentar de nuevo</button>
+
+    </div>
+  </div>
+
+
+
+  <!-- Perdiste modal -->
+  <div [ngStyle]="{ 'display':vidas===0? 'block':'none'}" class="modal" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn-close"></button>
+        </div>
+        <div class="modal-body">
+          HAS PERDIDO!!!
+        </div>
+        <div class="modal-footer">
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Ganaste modal-->
+  <div [ngStyle]="{ 'display':ganaste()?'block':'none'}" class="modal" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn-close"></button>
+        </div>
+        <div class="modal-body">
+          HAS GANADO!!!
+        </div>
+        <div class="modal-footer">
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
